@@ -427,5 +427,11 @@ func appendInt(buf []byte, i int64) []byte {
 		i /= 10
 	}
 
-	return append(buf, tmp[idx:]...)
+}
+
+
+// appendFloat appends the string representation of a float64 to the buffer.
+func appendFloat(buf []byte, f float64) []byte {
+	// Use 'g' format for compact representation, 6 digits precision, -1 for all digits necessary
+	return append(buf, strconv.FormatFloat(f, 'g', -1, 64)...)
 }
