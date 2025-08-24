@@ -112,12 +112,6 @@ print_success "Ready for release $new_version"
 print_info "Creating annotated tag $new_version..."
 git tag -a "$new_version" -m "Release $new_version
 
-This release includes:
-- Go actor library implementation with generic type safety
-- Actor registry for lifecycle management
-- Command execution framework
-- Build and development tooling
-
 Changes since $current_version:
 $(git log --oneline "$current_version"..HEAD --pretty=format:"- %s" | head -20)
 "
