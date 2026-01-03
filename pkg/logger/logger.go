@@ -54,6 +54,8 @@ const (
 
 	// PanicLevel logs a message, then panics.
 	PanicLevel
+
+	DefaultTimeFormat = "2006-01-02T15:04:05.000Z"
 )
 
 // String returns the string representation of the log level.
@@ -367,7 +369,7 @@ func (l *Logger) appendText(buf []byte, level Level, msg string, fields ...Field
 		now = now.UTC()
 	}
 
-	buf = append(buf, now.Format("2006-01-02T15:04:05.000Z07:00")...)
+	buf = append(buf, now.Format(DefaultTimeFormat)...)
 	buf = append(buf, ' ')
 	buf = append(buf, level.String()...)
 	buf = append(buf, ' ')

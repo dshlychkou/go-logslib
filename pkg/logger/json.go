@@ -16,7 +16,7 @@ func (l *Logger) appendJSON(buf []byte, level Level, msg string, fields ...Field
 	}
 
 	buf = append(buf, `"timestamp":"`...)
-	buf = append(buf, now.Format(time.RFC3339Nano)...)
+	buf = append(buf, now.Format(DefaultTimeFormat)...)
 	buf = append(buf, '"')
 
 	buf = append(buf, `,"level":"`...)
