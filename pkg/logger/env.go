@@ -84,6 +84,5 @@ func ConfigFromEnv() Config {
 		Format:     fromEnvLogFormat(),
 		BufferSize: fromEnvBufferSize(),
 		UseUTC:     fromEnvUseUTC(),
-		Output:     os.Stdout,
 	}
 }
