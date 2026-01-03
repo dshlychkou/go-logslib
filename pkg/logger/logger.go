@@ -54,6 +54,8 @@ const (
 
 	// PanicLevel logs a message, then panics.
 	PanicLevel
+
+	DefaultTimeFormat = "2006-01-02T15:04:05.000Z"
 )
 
 // String returns the string representation of the log level.
@@ -116,6 +118,10 @@ type Config struct {
 	// until the buffer is full or Flush() is called. Useful for reducing
 	// I/O operations in cloud environments.
 	BufferSize int
+
+	// UseUTC determines whether timestamps are in UTC (true) or local timezone (false).
+	// Defaults to false (local timezone).
+	UseUTC bool
 }
 
 // Logger is a high-performance logging instance that supports structured
@@ -358,9 +364,12 @@ func (cl *ContextLogger) extractContextFields(fields []Field) []Field {
 }
 
 func (l *Logger) appendText(buf []byte, level Level, msg string, fields ...Field) []byte {
-	now := time.Now().UTC()
+	now := time.Now()
+	if l.config.UseUTC {
+		now = now.UTC()
+	}
 
-	buf = append(buf, now.Format("2006-01-02T15:04:05.000Z07:00")...)
+	buf = append(buf, now.Format(DefaultTimeFormat)...)
 	buf = append(buf, ' ')
 	buf = append(buf, level.String()...)
 	buf = append(buf, ' ')

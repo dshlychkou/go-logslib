@@ -10,6 +10,7 @@ const (
 	EnvLogLevel      = "LOG_LEVEL"
 	EnvLogBufferSize = "LOG_BUFFER_SIZE"
 	EnvLogFormat     = "LOG_FORMAT"
+	EnvLogUseUTC     = "LOG_USE_UTC"
 	EnvDebugLevel    = "debug"
 	EnvInfoLevel     = "info"
 	EnvWarnLevel     = "warn"
@@ -71,11 +72,17 @@ func fromEnvLogFormat() Format {
 	}
 }
 
+func fromEnvUseUTC() bool {
+	envUseUTC := os.Getenv(EnvLogUseUTC)
+	envUseUTC = strings.ToLower(envUseUTC)
+	return envUseUTC == "true" || envUseUTC == "1"
+}
+
 func ConfigFromEnv() Config {
 	return Config{
 		Level:      fromEnvLogLevel(),
 		Format:     fromEnvLogFormat(),
 		BufferSize: fromEnvBufferSize(),
-		Output:     os.Stdout,
+		UseUTC:     fromEnvUseUTC(),
 	}
 }
