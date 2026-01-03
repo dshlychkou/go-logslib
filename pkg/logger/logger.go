@@ -55,7 +55,7 @@ const (
 	// PanicLevel logs a message, then panics.
 	PanicLevel
 
-	DefaultTimeFormat = "2006-01-02T15:04:05.000Z"
+	DefaultTimeFormat = "2006-01-02T15:04:05.000Z07:00"
 )
 
 // String returns the string representation of the log level.
