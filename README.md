@@ -1,18 +1,17 @@
 # go-logslib
 
-A high-performance, zero-allocation Go logging library designed for production environments with strict performance requirements.
+Simple logging library ready to Go.
 
 ## Features
 
-- 🚀 **Ultra-fast**: 20-600 ns/op depending on configuration
+- 🚀 **Relativly Fast**: 20-600 ns/op depending on configuration
 - 🧠 **Memory efficient**: 0-5 allocations per log operation
-- 🎯 **Multiple formats**: Text and JSON output
+- 🎯 **Flexible**: Text and JSON output formats with UTC or Local time zones
 - 📊 **Structured logging**: Type-safe field logging
 - 🔧 **Configurable levels**: Debug, Info, Warn, Error, Fatal, Panic
 - 🌐 **Context support**: TraceID, SpanID, and custom metadata
 - 📦 **Buffering**: Optional buffering for cloud cost optimization
 - 🔒 **Thread-safe**: Concurrent logging support
-- 📈 **Production-ready**: Designed for high-load backend services
 
 ## Quick Start
 
